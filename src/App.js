@@ -1,22 +1,31 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import axios from 'axios';
+import React from 'react';
+import { Navbar } from './components/Navbar';
+import { Card } from './components/Card';
 
 function App() {
+  const [data, setData] = React.useState();
+  const fetchRecipe = async () => {
+    try {
+      const response = await axios.get('https://api.spoonacular.com/recipes/716429/information?apiKey=API_KEY&includeNutrition=true');
+      if (response.status === 200) {
+        setData(response.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch recipe", error);
+    }
+  };
+  React.useEffect(() => {
+    fetchRecipe();
+  }, [])
   return (
     <div className="App">
+      <Navbar />
+      
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {data && <Card data={data}/>}
       </header>
     </div>
   );
