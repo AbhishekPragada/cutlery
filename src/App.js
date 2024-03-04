@@ -1,9 +1,11 @@
-import logo from './logo.svg';
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Card } from './components/Card';
+import { Home } from './pages/Home';
+import { RecipePage } from './pages/RecipePage';
 
 function App() {
   const [data, setData] = React.useState();
@@ -22,11 +24,13 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <BrowserRouter>
       <Navbar />
-      
-      <header className="App-header">
-        {data && <Card data={data}/>}
-      </header>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/recipe/:id' element={<RecipePage />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

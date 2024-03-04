@@ -64,10 +64,11 @@
     .navbar-search{
       .MuiAutocomplete-root{
         .MuiFormControl-root {
-          background-color: white;
+          background-color: rgb(228, 228, 228);
           border-radius: 28px;
           label{
             padding-left: 10px;
+            color: #e28e49;
             &.Mui-focused{
               color: white;
             }
