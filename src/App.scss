@@ -41,27 +41,31 @@
 
 .navbar{
   width: auto;
-  height: 65px;
+  height: 165px;
   background-color: #f18e3c;
+  // background-image: url("https://cdn.dribbble.com/userupload/4387322/file/original-8617a86c428f72970b0997fda73d49ba.jpg?resize=1024x1024");
+  background-size: 50%;
+  background-position: right;
+  background-repeat: no-repeat;
   position: sticky;
   top: 0;
   display: flex;
   
-  padding: 0px 50px;
+  padding: 10px 50px;
   flex-direction: row;
   .navbar-cnt{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     .navbar-icon{
       font-family: 'Great Vibes';
       font-size: 40px;
       font-weight: 400;
-      color: rgb(231, 231, 231);
+      color: white;
     }
     .navbar-search{
+      position: absolute;
+      left: calc((100% - 300px)/2);
       .MuiAutocomplete-root{
         .MuiFormControl-root {
           background-color: rgb(228, 228, 228);
@@ -92,6 +96,7 @@
   }
 }
 
+// ==============
 
 .card{
   height: 300px;
@@ -102,6 +107,38 @@
     img{
       width: 100%;
       height: 100%;
+    }
+  }
+}
+
+// =============
+
+.recipe-page{
+  .recipe-page-head-section{
+    display: flex;
+    flex-direction: row;
+    .recipe-page-h-rhs{
+      .recipe-ingredients{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        .recipe-ingredient{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .recipe-ingredient-image{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid red;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
     }
   }
 }
