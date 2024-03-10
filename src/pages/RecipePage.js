@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_KEY } from '../API';
 import axios from 'axios';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export const RecipePage = () => {
     const { id } = useParams();
@@ -42,25 +43,59 @@ export const RecipePage = () => {
         <div className='recipe-page'>
             <div className='recipe-page-head-section'>
                 <div className='recipe-page-h-lhs'>
-                    <div className='recipe-image'><img src={recipeDetails?.image}/></div>
+                    <div className='recipe-title'>
+                    <h1>
+                        {recipeDetails?.title}
+                    </h1>
+                    &nbsp;
+                    {recipeDetails?.vegetarian ? 
+                                    <img className='recipe-deatils-icon' src="https://img.icons8.com/?size=48&id=61083&format=png" />
+                                    : <img className='recipe-deatils-icon' src="https://img.icons8.com/?size=96&id=61082&format=png" />
+                    }
+                    </div>
+                    <div className='recipe-image'>
+                        <img alt={recipeDetails?.title} src={recipeDetails?.image}/>
+                    </div>
                 </div>
                 <div className='recipe-page-h-rhs'>
-                    <h1>{recipeDetails?.title}</h1>               
+                    
+                    <div className='recipe-details-line'>
+                        <div className='recipe-details-line-LHS'>
+                            <div className='recipe-details-line-time'>
+                                <AccessTimeIcon />
+                                &nbsp;{` ${recipeDetails?.readyInMinutes} min`}
+                            </div>
+                            <div className='recipe-details-line-serving'>
+                                <img className='recipe-deatils-icon' src="https://img.icons8.com/?size=64&id=k3eu76xI1ql7&format=png"/> 
+                                &nbsp;{`${recipeDetails?.servings} people`}
+                            </div>
+                        </div>
+                        <div className='recipe-details-line-RHS'>
+                            Gluten Free: {`${recipeDetails?.glutenFree}`}
+                            Diary Free: {`${recipeDetails?.dairyFree}`}
+                            Vegan: {`${recipeDetails?.vegan}`}
+                        </div>
+                    </div>            
                     <div className='recipe-ingredients'>
-                        {
-                            recipeDetails?.extendedIngredients?.map(
-                                item => {
-                                    return (
-                                        <div className='recipe-ingredient'>
-                                            <div className='recipe-ingredient-image' 
-                                                style={{ backgroundImage: `url(https://spoonacular.com/cdn/ingredients_100x100/${item.image})`}}/>
-                                            <div className='recipe-ingredient-name'>{item.nameClean}</div>
-                                            <div className='recipe-ingredient-quantity'></div>
-                                        </div>
-                                    )
-                                }
-                            )
-                        } 
+                        <h2>Ingredients</h2>
+                        <div className='recipe-ingredients-list'>
+                            {
+                                recipeDetails?.extendedIngredients?.map(
+                                    item => {
+                                        return (
+                                            <div className='recipe-ingredient'>
+                                                <div className='recipe-ingredient-image-cnt'>
+                                                    <div className='recipe-ingredient-image' 
+                                                        style={{ backgroundImage: `url(https://spoonacular.com/cdn/ingredients_100x100/${item.image})`}}/>
+                                                </div>
+                                                <div className='recipe-ingredient-name'>{item.nameClean}</div>
+                                                <div className='recipe-ingredient-quantity'></div>
+                                            </div>
+                                        )
+                                    }
+                                )
+                            }
+                        </div> 
                     </div>
                 </div>
             </div>
