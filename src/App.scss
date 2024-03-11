@@ -41,16 +41,15 @@
 
 .navbar{
   width: auto;
-  height: 165px;
-  background-color: #f18e3c;
-  // background-image: url("https://cdn.dribbble.com/userupload/4387322/file/original-8617a86c428f72970b0997fda73d49ba.jpg?resize=1024x1024");
-  background-size: 50%;
+  height: 200px;
+  background-color: #ffffff;
+  background-image: url("https://img.freepik.com/premium-photo/herb-spices-cooking-background_136595-562.jpg?w=1380");
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   position: sticky;
   top: 0;
   display: flex;
-  
   padding: 10px 50px;
   flex-direction: row;
   .navbar-cnt{
@@ -58,10 +57,12 @@
     display: flex;
     flex-direction: row;
     .navbar-icon{
+      position: relative;
       font-family: 'Great Vibes';
-      font-size: 40px;
+      font-size: 50px;
       font-weight: 400;
-      color: white;
+      top: 20%;
+      color: #f18e3c;
     }
     .navbar-search{
       position: absolute;
@@ -117,7 +118,7 @@
   .recipe-page-head-section{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     margin: 20px 7% 0px;
     .recipe-deatils-icon{
       height: 35px;
@@ -142,7 +143,7 @@
       }
       .recipe-image{
         width: 80%;
-        height: 100%;
+        // height: 100%;
         position: relative;
         display: inline-block;
         padding: 40px 0px;
@@ -215,10 +216,11 @@
       }
 
       .recipe-ingredients{
+        height: auto;
+        overflow: hidden;
         .recipe-ingredients-list{
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
           gap: 10px;
           .recipe-ingredient{
             display: flex;
