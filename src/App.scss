@@ -1,3 +1,9 @@
+html{
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 .App {
   text-align: center;
 }
@@ -52,6 +58,7 @@
   display: flex;
   padding: 10px 50px;
   flex-direction: row;
+  box-shadow: 0px 15px 10px -15px rgb(253, 197, 144);
   .navbar-cnt{
     width: 100%;
     display: flex;
@@ -69,13 +76,13 @@
       left: calc((100% - 300px)/2);
       .MuiAutocomplete-root{
         .MuiFormControl-root {
-          background-color: rgb(228, 228, 228);
+          background-color: #eec6a6;
           border-radius: 28px;
           label{
             padding-left: 10px;
-            color: #e28e49;
+            color: white;
             &.Mui-focused{
-              color: white;
+              color: #e28e49;
             }
           }
           .MuiInputBase-root.MuiOutlinedInput-root{
@@ -90,7 +97,7 @@
         }
 
         &.Mui-focused .MuiFormControl-root{
-          background-color: #facda8;
+          background-color: rgb(228, 228, 228);
         }
       }
     }
@@ -115,11 +122,11 @@
 // =============
 
 .recipe-page{
+  margin: 20px 5% 0px;
   .recipe-page-head-section{
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    margin: 20px 7% 0px;
     .recipe-deatils-icon{
       height: 35px;
       width: 35px;
@@ -128,7 +135,7 @@
       width: 70%;
       display: flex;
       justify-content: center;
-      align-items: center;
+      // align-items: center;
       flex-direction: column;
       .recipe-title{
         width: 80%;
@@ -143,10 +150,9 @@
       }
       .recipe-image{
         width: 80%;
-        // height: 100%;
         position: relative;
         display: inline-block;
-        padding: 40px 0px;
+        padding: 30px 0px;
         border-radius: 20px;
         background-image: linear-gradient(
           45deg,
@@ -161,23 +167,8 @@
           #ff8d30 80%,
           #ff8d30 100%
         );
-        // &::before{
-        //   content: "";
-        //   position: absolute;
-        //   top: 0;
-        //   left: 0;
-        //   width: 100%;
-        //   height: 100%;
-        //   background-color: rgba(255, 212, 171, 0.2);
-        //   transition: background-color 0.5s ease;
-        // }
-        // &:hover{
-        //   &::before{
-        //     background-color: transparent;
-        //   }
-        // }
         img {
-          width: 80%;
+          width: 85%;
         }
       }
     }
@@ -225,7 +216,6 @@
           .recipe-ingredient{
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             gap: 6px;
             .recipe-ingredient-image-cnt{
@@ -236,7 +226,7 @@
                 border: 1px solid hsla(0, 0%, 49%, .17);
                 overflow: hidden;
                 backdrop-filter: saturate(180%) blur(20px);
-                box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
                 &:hover{
                   cursor: pointer;
                   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
@@ -253,6 +243,12 @@
         }
       }
     }
+  }
+  .recipe-description{
+    width: 70%;
+    background-color: #e28e49;
+    border-radius: 32px;
+    padding: 20px;
   }
 }
 

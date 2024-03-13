@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_KEY } from '../API';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export const RecipePage = () => {
@@ -99,6 +100,11 @@ export const RecipePage = () => {
                     </div>
                 </div>
             </div>
+            <div className='recipe-description'>
+                <h2>Description</h2>
+                <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(recipeDetails?.summary || '') }} />
+            </div>
+            <div className='recipe-process'></div>
         </div>
     )
 }
