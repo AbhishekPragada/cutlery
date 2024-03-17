@@ -37,7 +37,7 @@ export const RecipePage = () => {
     }, [id]);
 
     if(isLoading) {
-        return <div>Loading the details....</div>
+        return <span class="loader"></span>
     }
 
     return(
@@ -45,9 +45,9 @@ export const RecipePage = () => {
             <div className='recipe-page-head-section'>
                 <div className='recipe-page-h-lhs'>
                     <div className='recipe-title'>
-                    <h1>
+                    <span className='header-text-32'>
                         {recipeDetails?.title}
-                    </h1>
+                    </span>
                     &nbsp;
                     {recipeDetails?.vegetarian ? 
                                     <img className='recipe-deatils-icon' src="https://img.icons8.com/?size=48&id=61083&format=png" />
@@ -56,6 +56,10 @@ export const RecipePage = () => {
                     </div>
                     <div className='recipe-image'>
                         <img alt={recipeDetails?.title} src={recipeDetails?.image}/>
+                    </div>
+                    <div className='recipe-description'>
+                        <span className='recipe-description-head header-text-24'>Description</span>
+                        <span className='recipe-description-body' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(recipeDetails?.summary || '') }} />
                     </div>
                 </div>
                 <div className='recipe-page-h-rhs'>
@@ -78,7 +82,7 @@ export const RecipePage = () => {
                         </div>
                     </div>            
                     <div className='recipe-ingredients'>
-                        <h2>Ingredients</h2>
+                        <span className='header-text-24'>Ingredients</span>
                         <div className='recipe-ingredients-list'>
                             {
                                 recipeDetails?.extendedIngredients?.map(
@@ -99,10 +103,6 @@ export const RecipePage = () => {
                         </div> 
                     </div>
                 </div>
-            </div>
-            <div className='recipe-description'>
-                <h2>Description</h2>
-                <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(recipeDetails?.summary || '') }} />
             </div>
             <div className='recipe-process'></div>
         </div>

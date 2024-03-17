@@ -8,16 +8,15 @@ html{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@for $i from 10 through 50 {
+  span.header-text-#{$i} {
+    font-family: "Roboto";
+    font-size: #{$i}px;
+    font-weight: 600;
   }
 }
+
+
 
 .App-header {
   background-color: #282c34;
@@ -30,24 +29,11 @@ html{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 // =============
 
 .navbar{
   width: auto;
-  height: 200px;
+  height: 180px;
   background-color: #ffffff;
   background-image: url("https://img.freepik.com/premium-photo/herb-spices-cooking-background_136595-562.jpg?w=1380");
   background-size: contain;
@@ -59,6 +45,7 @@ html{
   padding: 10px 50px;
   flex-direction: row;
   box-shadow: 0px 15px 10px -15px rgb(253, 197, 144);
+  z-index: 10;
   .navbar-cnt{
     width: 100%;
     display: flex;
@@ -83,6 +70,7 @@ html{
             color: white;
             &.Mui-focused{
               color: #e28e49;
+              transition: linear 0.25s;
             }
           }
           .MuiInputBase-root.MuiOutlinedInput-root{
@@ -135,7 +123,6 @@ html{
       width: 70%;
       display: flex;
       justify-content: center;
-      // align-items: center;
       flex-direction: column;
       .recipe-title{
         width: 80%;
@@ -158,17 +145,51 @@ html{
           45deg,
           #ff8d30 0%,
           #ff8d30 20%,
-          #f6f4fd 20%,
-          #f6f4fd 40%,
+          #fde8d7 20%,
+          #fde8d7 40%,
           #ff8d30 40%,
           #ff8d30 60%,
-          #f6f4fd 60%,
-          #f6f4fd 80%,
+          #fde8d7 60%,
+          #fde8d7 80%,
           #ff8d30 80%,
           #ff8d30 100%
         );
         img {
-          width: 85%;
+          width: 87%;
+        }
+      }
+      .recipe-description{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: left;
+        gap: 16px;
+        position: relative;
+        top: -50px;
+        width: 95%;
+        background: rgba(255, 255, 255, 0.01);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.4px);
+        -webkit-backdrop-filter: blur(6.4px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 32px;
+        padding: 20px;
+        .recipe-description-head{
+
+        }
+        .recipe-description-body {
+          text-align: justify;
+          letter-spacing: 0.1px;
+          line-height: 1.35;
+          font-size: 16px;
+          b {
+            color: #ec7412;
+          }
+          a {
+            color: black;
+            text-decoration: none;
+            pointer-events: none;
+          }
         }
       }
     }
@@ -219,15 +240,17 @@ html{
             align-items: center;
             gap: 6px;
             .recipe-ingredient-image-cnt{
-                width: 50px;
-                height: 50px;
-                border-radius: 20%;
-                padding: 5px;
-                border: 1px solid hsla(0, 0%, 49%, .17);
-                overflow: hidden;
-                backdrop-filter: saturate(180%) blur(20px);
-                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-                &:hover{
+              width: 50px;
+              height: 50px;
+              border-radius: 20%;
+              padding: 5px;
+              border: 1px solid hsla(0, 0%, 49%, .17);
+              overflow: hidden;
+              backdrop-filter: saturate(180%) blur(20px);
+              box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+              transition: linear 0.2s;
+              &:hover{
+                  transition: linear 0.2s;
                   cursor: pointer;
                   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
                 }
@@ -244,54 +267,62 @@ html{
       }
     }
   }
-  .recipe-description{
-    width: 70%;
-    background-color: #e28e49;
-    border-radius: 32px;
-    padding: 20px;
-  }
 }
 
 
+//  loader -----------------------
 
-
-///// designs
-.five-pointed-star {
-  --star-color:orange;
-  margin:1em auto;
-  font-size:10em;
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
   position: relative;
-  display: block;
-  width: 0px;
-  height: 0px;
-  border-right: 1em solid transparent;
-  border-bottom: 0.7em solid var(--star-color);
-  border-left: 1em solid transparent;
-  transform: rotate(35deg);
- }
- .five-pointed-star:before {
-  border-bottom: 0.8em solid var(--star-color);
-  border-left: 0.3em solid transparent;
-  border-right: 0.3em solid transparent;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
   position: absolute;
-  height: 0;
-  width: 0;
-  top: -0.45em;
-  left: -0.65em;
-  display: block;
-  content:"";
-  transform: rotate(-35deg);
- }
- .five-pointed-star:after {
-  position: absolute;
-  display: block;
-  top: 0.03em;
-  left: -1.05em;
-  width: 0;
-  height: 0;
-  border-right: 1em solid transparent;
-  border-bottom: 0.7em solid var(--star-color);
-  border-left: 1em solid transparent;
-  transform: rotate(-70deg);
-  content:"";
- }
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #FF3D00 #FF3D00;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 32px;
+  height: 32px;
+  border-color: #FFF #FFF transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+    
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+    
