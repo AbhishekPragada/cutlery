@@ -10,8 +10,8 @@ export const RecipePage = () => {
     const [recipeDetails, setRecipeDetails] = useState(null);
     const [ isLoading, setIsLoading ] = useState(false);
 
-    const loadImage = (imageUrl) => {
-        return new Promise((resolve) => {
+    const loadImage = imageUrl => {
+        return new Promise(resolve => {
           const img = new Image();
           img.src = imageUrl;
           img.onload = resolve;
@@ -62,13 +62,12 @@ export const RecipePage = () => {
                         <span className='recipe-description-body' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(recipeDetails?.summary || '') }} />
                     </div>
                 </div>
-                <div className='recipe-page-h-rhs'>
-                    
+                <div className='recipe-page-h-rhs'>             
                     <div className='recipe-details-line'>
                         <div className='recipe-details-line-LHS'>
                             <div className='recipe-details-line-time'>
                                 <AccessTimeIcon />
-                                &nbsp;{` ${recipeDetails?.readyInMinutes} min`}
+                                &nbsp;{`${recipeDetails?.readyInMinutes} min`}
                             </div>
                             <div className='recipe-details-line-serving'>
                                 <img className='recipe-deatils-icon' src="https://img.icons8.com/?size=64&id=k3eu76xI1ql7&format=png"/> 
@@ -76,8 +75,8 @@ export const RecipePage = () => {
                             </div>
                         </div>
                         <div className='recipe-details-line-RHS'>
-                            Gluten Free: {`${recipeDetails?.glutenFree}`}
-                            Diary Free: {`${recipeDetails?.dairyFree}`}
+                            Gluten Free: {`${recipeDetails?.glutenFree}`} &nbsp;
+                            Diary Free: {`${recipeDetails?.dairyFree}`} &nbsp;
                             Vegan: {`${recipeDetails?.vegan}`}
                         </div>
                     </div>            

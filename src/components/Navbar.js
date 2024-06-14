@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Autocomplete, Box } from '@mui/material'
+import { TextField, Autocomplete, Box, Modal } from '@mui/material'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 import { API_KEY } from '../API';
+import { Login } from '../login/Login';
+// import { FavoriteModal } from './FavoriteModal';
+// import Fade from "@mui/material/Fade";
 
 export const Navbar = () => {
     const [input, setInput] = useState('');
@@ -42,6 +46,10 @@ export const Navbar = () => {
             navigate(`/recipe/${selectedRecipe.id}`)
         }
     }
+
+    const [loginOpen, setloginOpen] = useState(false);
+    const handleLoginOpen = () => setloginOpen(true);
+    const handleLoginClose = () => setloginOpen(false);
     return (
         <div className='navbar'>
             <div className='navbar-cnt'>
@@ -61,7 +69,17 @@ export const Navbar = () => {
                         sx={{ width: 250}}/>}
                     />
                 </div>
-                <div className='navbar-quick-nav'></div> 
+                {/* <div className='navbar-favorites' onClick={handleLoginOpen}>
+                    <FavoriteIcon/>
+                </div> */}
+                <button className='login-btn' onClick={handleLoginOpen}>Login</button>
+                <Modal
+                open={loginOpen}
+                onClose={handleLoginClose}>
+                    {/* <Fade in={loginOpen}> */}
+                    <Login />
+                    {/* </Fade> */}
+                </Modal>
             </div>
         </div>
     )
