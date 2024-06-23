@@ -29,28 +29,31 @@ export const Login = () => {
     }, [user])
     return (
         <div className='loginModal'>
-            <div className='loginHeaderSec'>
-                <div className='loginHeader'>
-                    <h1>{isSignin ? "Sign In" : "Sign Up"}</h1>
-                </div>
-                <div className='closeIcon'>
-                    <CloseIcon/>
-                </div>
-            </div>
-            <div>
+            <div className='login-cnt'>
                 {isSignin ? SignIn(userDetails, email, password, handleEmailChange, handlePasswordChange, handleLogin) 
                     : SignUp()}
             </div>
-            <div className='authSec'></div>
+            {/* <div className='divider'></div>
+            <div className='authSec'></div> */}
         </div>
     )
 }
 
 const SignIn = (userDetails, email, password, handleEmailChange, handlePasswordChange, handleLogin) => {
     return(
-        <div className='sigin-cnt'>
-            {userDetails?.email}
-            <div className="signin-cnt-field">
+        <div className='signin-cnt'>
+            <div className='signin-cnt-left'>
+                <div className='loginHeader'>
+                    Sign In
+                </div>
+                <div className='or-login-text'>
+                    Or Login Using
+                </div>
+                <div className='authSection'>
+
+                </div>
+            </div>
+            <div className="signin-cnt-right">
                 <TextField
                     fullWidth
                     className="signin-fields email-cnt"
@@ -70,6 +73,9 @@ const SignIn = (userDetails, email, password, handleEmailChange, handlePasswordC
                     value={password}
                     onChange={handlePasswordChange}
                 />
+                <a className='forgot-pwd'>Forgot Password?</a>
+            </div>
+            <div className="btn-cnt">
                 <Button
                     fullWidth
                     className="login-btn"
